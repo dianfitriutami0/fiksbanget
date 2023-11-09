@@ -14,18 +14,16 @@ import javax.imageio.ImageIO;
  *
  * @author diann:v
  */
-public class TampilanLoading extends javax.swing.JFrame {
+public class splashScreen extends javax.swing.JFrame {
     
-public Timer t = null;
-private int count = 0;
-    /**
-     * Creates new form TampilanLoading
-     */
-    public TampilanLoading() {
+    public Timer t = null;
+    private int count = 0;
+    
+    public splashScreen() {
         initComponents();
        
         try {
-            BufferedImage beam = ImageIO.read(getClass().getResource("loading.jpg"));
+            BufferedImage beam = ImageIO.read(getClass().getResource("LIBRARY.jpg"));
             setIconImage(beam);
         }catch (IOException ex){
             Logger.getLogger(beranda.class.getName()).Log(Level.SEVERE, null, ex);
@@ -332,18 +330,22 @@ private int count = 0;
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 350));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 570, 60));
+        jPanel1.add(loading, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 470, 60));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/programperpustakaan/LIBRARY.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 600, 360));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -4, 500, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,21 +372,20 @@ private int count = 0;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TampilanLoading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(splashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TampilanLoading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(splashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TampilanLoading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(splashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TampilanLoading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(splashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TampilanLoading().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new splashScreen().setVisible(true);
         });
     }
 
