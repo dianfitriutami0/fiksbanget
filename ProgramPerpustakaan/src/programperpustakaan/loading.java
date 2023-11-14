@@ -70,7 +70,7 @@ public class loading extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 420, 43));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 420, 43));
 
         jLabel1.setBackground(new java.awt.Color(100, 100, 100));
         jLabel1.setText("LOADING");
