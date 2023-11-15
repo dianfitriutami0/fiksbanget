@@ -29,7 +29,7 @@ public class DataPinjam extends javax.swing.JFrame {
             BufferedImage beam = ImageIO.read(getClass().getResource("library.jpg"));
              setIconImage(beam); 
         } catch (IOException ex) {
-            Logger.getLogger(splashscreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
        this.setTitle("Data Peminjaman Buku");
     }

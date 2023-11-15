@@ -216,7 +216,7 @@ public class Beranda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         new databuku().setVisible(true);
+         new DataBuku().setVisible(true);
         dispose();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -226,12 +226,12 @@ dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new datapinjam().setVisible(true);
+        new DataPinjam().setVisible(true);
 dispose();       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new balikbuku().setVisible(true);
+        new BalikBuku().setVisible(true);
 dispose();        
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -252,7 +252,7 @@ dispose();
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public Beranda(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
