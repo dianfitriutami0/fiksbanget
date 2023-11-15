@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package programperpustakaan;
+import com.mycompany.penyimpanandataklien.loading;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;
@@ -91,7 +92,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         txtpass.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtpass.setText("jPasswordField1");
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpassActionPerformed(evt);
@@ -223,9 +223,9 @@ else if(txtpass.getText().equals("")){
 
 else{
  session ss = new session();
- ss.setuser(txtuser.getText());
+ session.setuser(txtuser.getText());
 try{
-    String query = "SELECT * FROM admin WHERE username='"+txtuser.getText()
+    String query = "SELECT * FROM admin WHERE user='"+txtuser.getText()
                   +"' AND password='"+txtpass.getText()+"'";
         java.sql.Connection con = (Connection) Konektor.koneksi();
     java.sql.Statement st = con.createStatement();

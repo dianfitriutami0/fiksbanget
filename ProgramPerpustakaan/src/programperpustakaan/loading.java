@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-
 /**
  *
  * @author diann:v
@@ -52,6 +51,7 @@ public class loading extends javax.swing.JFrame {
             }
             
         });
+        t.start();
     }
 
     /**
@@ -70,11 +70,11 @@ public class loading extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 420, 43));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 420, 43));
 
         jLabel1.setBackground(new java.awt.Color(100, 100, 100));
         jLabel1.setText("LOADING");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 100, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,6 +90,7 @@ public class loading extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void jProgressBar1ComponentAdded(java.awt.event.ContainerEvent evt){
+        
     }
     /**
      * @param args the command line arguments

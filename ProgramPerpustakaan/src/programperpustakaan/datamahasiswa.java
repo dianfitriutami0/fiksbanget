@@ -165,15 +165,17 @@ public class datamahasiswa extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
+        jScrollPane1.setToolTipText("ID\nnama\njenis kelamin\ntelepon\nemail\njurusan");
+
         tblmhs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "NAMA", "JENIS KELAMIN", "TELEPON", "EMAIL", "JURUSAN"
             }
         ));
         tblmhs.addMouseListener(new java.awt.event.MouseAdapter() {
