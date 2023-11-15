@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author ACER
@@ -30,7 +29,6 @@ public class Login extends javax.swing.JFrame {
             Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
        this.setTitle("Login");
-     }
     }
     
     
@@ -229,7 +227,7 @@ else{
 try{
     String query = "SELECT * FROM admin WHERE username='"+txtuser.getText()
                   +"' AND password='"+txtpass.getText()+"'";
-        java.sql.Connection con = (Connection) koneksi.koneksi();
+        java.sql.Connection con = (Connection) Konektor.koneksi();
     java.sql.Statement st = con.createStatement();
     java.sql.ResultSet data = st.executeQuery(query);
     if(data.next()){

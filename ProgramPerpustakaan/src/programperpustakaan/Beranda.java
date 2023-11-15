@@ -41,7 +41,7 @@ public class Beranda extends javax.swing.JFrame {
       String ss = session.getuser();           
     String query = ("select nama_admin from "
                     + "admin where username='"+ ss+"' ");
-            java.sql.Connection con = (Connection) koneksi.koneksi();
+            java.sql.Connection con = (Connection) Konektor.koneksi();
        java.sql.Statement st = con.createStatement();
        java.sql.ResultSet data = st.executeQuery(query);
        while(data.next()){
@@ -241,7 +241,7 @@ dispose();
   
   if(pil==JOptionPane.YES_OPTION){
       
-      new login().setVisible(true);
+      new Login().setVisible(true);
     dispose();
     }
     else{

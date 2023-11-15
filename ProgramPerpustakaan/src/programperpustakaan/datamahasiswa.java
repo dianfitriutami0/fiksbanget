@@ -80,12 +80,12 @@ public class datamahasiswa extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        txtsrc = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblmhs = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        txtsrc = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -100,7 +100,6 @@ public class datamahasiswa extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 51, 153));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("INPUT");
-        jButton1.setActionCommand("INPUT");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -140,23 +139,6 @@ public class datamahasiswa extends javax.swing.JFrame {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
-            }
-        });
-
-        txtsrc.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        txtsrc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtsrcMouseClicked(evt);
-            }
-        });
-        txtsrc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsrcActionPerformed(evt);
-            }
-        });
-        txtsrc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtsrcKeyReleased(evt);
             }
         });
 
@@ -205,6 +187,18 @@ public class datamahasiswa extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("CARI:");
 
+        txtsrc.setText("jTextField1");
+        txtsrc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtsrcMouseClicked(evt);
+            }
+        });
+        txtsrc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsrcKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -215,9 +209,9 @@ public class datamahasiswa extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(70, 70, 70)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtsrc, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(26, 26, 26)
+                .addComponent(txtsrc, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(213, 213, 213))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jButton1)
@@ -242,11 +236,11 @@ public class datamahasiswa extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtsrc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(txtsrc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -268,10 +262,6 @@ public class datamahasiswa extends javax.swing.JFrame {
 new inputmhs().setVisible(true);
 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsrcActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsrcActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 new Beranda().setVisible(true);
@@ -314,6 +304,15 @@ int selectedRow = tblmhs.getSelectedRow();
 txtsrc.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+
+    private void tblmhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmhsMouseClicked
+int baris = tblmhs.getSelectedRow();
+        String id= tblmhs.getValueAt(baris, 0).toString();
+      session.setid(id);
+      new datamahasiswa().setVisible(true);
+       this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_tblmhsMouseClicked
+
     private void txtsrcKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsrcKeyReleased
 if(txtsrc.getText().equals("")){
  loadtable();   
@@ -344,15 +343,8 @@ else{
     catch(Exception b){
         JOptionPane.showMessageDialog(null,b.getMessage());
     }        // TODO add your handling code here:
+    }                 // TODO add your handling code here:
     }//GEN-LAST:event_txtsrcKeyReleased
-
-    private void tblmhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmhsMouseClicked
-int baris = tblmhs.getSelectedRow();
-        String id= tblmhs.getValueAt(baris, 0).toString();
-      session.setid(id);
-      new datamahasiswa().setVisible(true);
-       this.dispose();        // TODO add your handling code here:
-    }//GEN-LAST:event_tblmhsMouseClicked
 
     private void txtsrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsrcMouseClicked
 txtsrc.setText(null);        // TODO add your handling code here:

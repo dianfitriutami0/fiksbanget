@@ -45,7 +45,7 @@ public class loading extends javax.swing.JFrame {
                     jProgressBar1.setValue(jProgressBar1.getValue()+1);
                 }
                 if (jProgressBar1.getValue()==100){
-                    new beranda().setVisible(true);
+                    new Beranda().setVisible(true);
                 t.stop();
                 dispose();
                 }

@@ -26,7 +26,7 @@ public class splashScreen extends javax.swing.JFrame {
             BufferedImage beam = ImageIO.read(getClass().getResource("library.jpg"));
             setIconImage(beam);
         } catch (IOException ex) {
-            Logger.getLogger(beranda.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Beranda.class.getName()).log(Level.SEVERE, null, ex);
         }
        
        this.setTitle("Aplikasi Perpustakaan");
@@ -38,7 +38,7 @@ public class splashScreen extends javax.swing.JFrame {
                 loading.setValue(loading.getValue()+ 1);
             }
             if(loading.getValue()==100 ){
-                new login().setVisible(true);
+                new Login().setVisible(true);
                 t.stop();
                 dispose();
             } 

@@ -14,25 +14,23 @@ public class Konektor {
     private static Connection mysqlconfig;
 
     public static Connection koneksi() {
+        
         try {
             String url = "jdbc:mysql://localhost:3306/perpustakaan";
             String user = "root";
             String pass = "";
             
             mysqlconfig = DriverManager.getConnection(url, user, pass);
-
+            return mysqlconfig;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Tidak dapat terhubung ke Database: " + e.getMessage());
-        } finally {
-            // Tutup koneksi di sini jika diperlukan
-            // Cek jika mysqlconfig bukan null sebelum mencoba menutup
-            try {
-                if (mysqlconfig != null) {
-                    mysqlconfig.close();
-                }
-            } catch (SQLException e) {
-            }
+            throw new RuntimeException("Tidak dapat terhubung ke Database", e);
         }
-        return mysqlconfig;
     }
 }
+
+
+
+
+
+
