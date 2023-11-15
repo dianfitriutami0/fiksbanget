@@ -217,7 +217,7 @@ public class DataPinjam extends javax.swing.JFrame {
     }//GEN-LAST:event_txtsrcActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     new inputpinjam().setVisible(true);
+     new InputPinjam().setVisible(true);
 dispose();        
     }//GEN-LAST:event_jButton1ActionPerformed
 

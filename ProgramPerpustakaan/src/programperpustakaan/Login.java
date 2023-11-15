@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package programperpustakaan;
-import com.mycompany.penyimpanandataklien.loading;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;

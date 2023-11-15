@@ -297,7 +297,7 @@ public class buku extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
             }
-            new databuku().setVisible(true);
+            new DataBuku().setVisible(true);
             dispose();
         }
         // TODO add your handling code here:
@@ -313,12 +313,12 @@ public class buku extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        new databuku().setVisible(true);
+        new DataBuku().setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new databuku().setVisible(true);
+        new DataBuku().setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
