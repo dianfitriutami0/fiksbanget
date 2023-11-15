@@ -339,8 +339,8 @@ txtjurusan.setText(null);         // TODO add your handling code here:
         }
         else{
         try {
-            String sql1 = "INSERT INTO data_mahasiswa"
-                    + " VALUES ('"+txtid.getText()+"','" + txtnama.getText() + txttelepon.getText()+ txtemail.getText()+ txtjurusan.getText()+ "','" + jeniskelamin.getSelectedItem() + "')";
+            String sql1 = String.format("INSERT INTO data_mahasiswa(nama,nomor_telepon,email,jurusan,jenis_kelamin)"
+                    + " VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\")",txtnama.getText(), txttelepon.getText(), txtemail.getText(), txtjurusan.getText(),jeniskelamin.getSelectedItem());
             java.sql.Connection kon = (Connection) Konektor.koneksi();
             java.sql.PreparedStatement pdt = kon.prepareStatement(sql1);
             pdt.execute();
@@ -349,6 +349,7 @@ txtjurusan.setText(null);         // TODO add your handling code here:
         dispose();
         } catch (Exception b) {
             JOptionPane.showMessageDialog(this, b.getMessage());
+            b.printStackTrace();
         }   
   
     }        // TODO add your handling code here:
