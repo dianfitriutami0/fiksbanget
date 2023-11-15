@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import static programperpustakaan.Konektor.koneksi;
 
 /**
  *
@@ -22,7 +23,17 @@ public class inputmhs extends javax.swing.JFrame {
      */
     public inputmhs() {
         initComponents();
+        
+        try {
+             BufferedImage beam = ImageIO.read(getClass().getResource("library.jpg"));
+             setIconImage(beam); 
+        } catch (IOException ex) {
+            Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       this.setTitle("Input Data Mahasiswa");
     }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,8 +45,8 @@ public class inputmhs extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        keluar = new javax.swing.JButton();
+        simpan = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -44,12 +55,12 @@ public class inputmhs extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtid = new javax.swing.JTextField();
+        txtnama = new javax.swing.JTextField();
+        txttelepon = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        txtjurusan = new javax.swing.JTextField();
+        jeniskelamin = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -57,13 +68,18 @@ public class inputmhs extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 51, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jButton2.setBackground(new java.awt.Color(255, 0, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("KELUAR");
+        keluar.setBackground(new java.awt.Color(255, 0, 0));
+        keluar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        keluar.setText("KELUAR");
 
-        jButton1.setBackground(new java.awt.Color(102, 255, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("SIMPAN");
+        simpan.setBackground(new java.awt.Color(102, 255, 102));
+        simpan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        simpan.setText("SIMPAN");
+        simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Jurusan :");
@@ -105,34 +121,79 @@ public class inputmhs extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTextField1.setBackground(new java.awt.Color(255, 153, 153));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtid.setBackground(new java.awt.Color(255, 153, 153));
+        txtid.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtidMouseClicked(evt);
+            }
+        });
+        txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtidActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(255, 153, 153));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtnama.setBackground(new java.awt.Color(255, 153, 153));
+        txtnama.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtnamaMouseClicked(evt);
+            }
+        });
+        txtnama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtnamaActionPerformed(evt);
             }
         });
 
-        jTextField3.setBackground(new java.awt.Color(255, 153, 153));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txttelepon.setBackground(new java.awt.Color(255, 153, 153));
+        txttelepon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txttelepon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtteleponMouseClicked(evt);
+            }
+        });
+        txttelepon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtteleponActionPerformed(evt);
+            }
+        });
 
-        jTextField4.setBackground(new java.awt.Color(255, 153, 153));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtemail.setBackground(new java.awt.Color(255, 153, 153));
+        txtemail.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtemail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtemailMouseClicked(evt);
+            }
+        });
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
 
-        jTextField5.setBackground(new java.awt.Color(255, 153, 153));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtjurusan.setBackground(new java.awt.Color(255, 153, 153));
+        txtjurusan.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtjurusan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtjurusanMouseClicked(evt);
+            }
+        });
+        txtjurusan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtjurusanActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setBackground(new java.awt.Color(255, 153, 153));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jeniskelamin.setBackground(new java.awt.Color(255, 153, 153));
+        jeniskelamin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jeniskelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan", " ", " " }));
+        jeniskelamin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jeniskelaminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,24 +204,24 @@ public class inputmhs extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(keluar)
                         .addGap(68, 68, 68)
-                        .addComponent(jButton1))
+                        .addComponent(simpan))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(103, 103, 103)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(148, 148, 148)
-                                .addComponent(jTextField5))
+                                .addComponent(txtjurusan))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(140, 140, 140)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,9 +229,9 @@ public class inputmhs extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(93, 93, 93)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4))))))
+                                    .addComponent(jeniskelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txttelepon)
+                                    .addComponent(txtemail))))))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,31 +241,31 @@ public class inputmhs extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jeniskelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttelepon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtjurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(simpan)
+                    .addComponent(keluar))
                 .addGap(31, 31, 31))
         );
 
@@ -222,13 +283,80 @@ public class inputmhs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtidActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtnamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtnamaActionPerformed
+
+    private void txtidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtidMouseClicked
+txtid.setText(null);        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidMouseClicked
+
+    private void txtnamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtnamaMouseClicked
+txtnama.setText(null);        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnamaMouseClicked
+
+    private void txtteleponActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtteleponActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtteleponActionPerformed
+
+    private void txtteleponMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtteleponMouseClicked
+txttelepon.setText(null);         // TODO add your handling code here:
+    }//GEN-LAST:event_txtteleponMouseClicked
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txtemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtemailMouseClicked
+txtemail.setText(null);         // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailMouseClicked
+
+    private void txtjurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtjurusanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtjurusanActionPerformed
+
+    private void txtjurusanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtjurusanMouseClicked
+txtjurusan.setText(null);         // TODO add your handling code here:
+    }//GEN-LAST:event_txtjurusanMouseClicked
+
+    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
+    String id = txtid.getText();
+    String nama = txtnama.getText();
+    String telepon = txttelepon.getText();
+    String email = txtemail.getText();
+    String jurusan = txtjurusan.getText();
+    
+    if(id.equals("")||nama.equals("")||telepon.equals("")||email.equals("")||jurusan.equals("")){
+            JOptionPane.showMessageDialog(null,"Isi Semua Form Yang Tersedia ");
+        
+    }
+    else if(jeniskelamin.getSelectedItem().equals("")){
+            JOptionPane.showMessageDialog(null,"Pilih jenis kelamin ");
+        }
+        else{
+        try {
+            String sql1 = "INSERT INTO data_mahasiswa"
+                    + " VALUES ('"+txtid.getText()+"','" + txtnama.getText() + txttelepon.getText()+ txtemail.getText()+ txtjurusan.getText()+ "','" + jeniskelamin.getSelectedItem() + "')";
+            java.sql.Connection kon = (Connection) Konektor.koneksi();
+            java.sql.PreparedStatement pdt = kon.prepareStatement(sql1);
+            pdt.execute();
+           JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
+        new datamahasiswa().setVisible(true);
+        dispose();
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(this, b.getMessage());
+        }   
+  
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_simpanActionPerformed
+
+    private void jeniskelaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeniskelaminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jeniskelaminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,9 +394,6 @@ public class inputmhs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -278,10 +403,13 @@ public class inputmhs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JComboBox<String> jeniskelamin;
+    private javax.swing.JButton keluar;
+    private javax.swing.JButton simpan;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtjurusan;
+    private javax.swing.JTextField txtnama;
+    private javax.swing.JTextField txttelepon;
     // End of variables declaration//GEN-END:variables
 }
