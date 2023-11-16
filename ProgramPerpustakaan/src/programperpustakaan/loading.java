@@ -69,22 +69,35 @@ public class loading extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 51, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 420, 43));
 
-        jLabel1.setBackground(new java.awt.Color(100, 100, 100));
+        jProgressBar1.setBackground(new java.awt.Color(255, 204, 204));
+        jProgressBar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jProgressBar1.setForeground(new java.awt.Color(255, 51, 153));
+        jProgressBar1.setBorderPainted(false);
+        jProgressBar1.setMaximumSize(new java.awt.Dimension(32767, 24));
+        jProgressBar1.setMinimumSize(new java.awt.Dimension(10, 24));
+        jProgressBar1.setPreferredSize(new java.awt.Dimension(146, 24));
+        jProgressBar1.setStringPainted(true);
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 370, 47));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("LOADING");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 100, 30));
+        jLabel1.setMaximumSize(new java.awt.Dimension(165, 47));
+        jLabel1.setMinimumSize(new java.awt.Dimension(165, 47));
+        jLabel1.setPreferredSize(new java.awt.Dimension(165, 47));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
         );
 
         pack();
