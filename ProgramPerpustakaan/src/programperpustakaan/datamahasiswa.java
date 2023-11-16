@@ -23,6 +23,7 @@ public class DataMahasiswa extends javax.swing.JFrame {
     /**
      * Creates new form DataMahasiswa
      */
+    
     public DataMahasiswa() {
         initComponents();
         loadtable();
@@ -31,7 +32,7 @@ public class DataMahasiswa extends javax.swing.JFrame {
              BufferedImage beam = ImageIO.read(getClass().getResource("library.jpg"));
              setIconImage(beam); 
         } catch (IOException ex) {
-            Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         this.setTitle("Data Mahasiswa");
@@ -265,7 +266,7 @@ public class DataMahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new inputmhs().setVisible(true);
+        new InputMhs().setVisible(true);
         dispose();        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

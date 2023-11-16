@@ -16,19 +16,19 @@ import static programperpustakaan.Konektor.koneksi;
  *
  * @author ACER
  */
-public class inputmhs extends javax.swing.JFrame {
+public class InputMhs extends javax.swing.JFrame {
 
     /**
-     * Creates new form inputmhs
+     * Creates new form InputMhs
      */
-    public inputmhs() {
+    public InputMhs() {
         initComponents();
         
         try {
              BufferedImage beam = ImageIO.read(getClass().getResource("library.jpg"));
              setIconImage(beam); 
         } catch (IOException ex) {
-            Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SplashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
        this.setTitle("Input Data Mahasiswa");
     }
@@ -63,7 +63,6 @@ public class inputmhs extends javax.swing.JFrame {
         jeniskelamin = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
@@ -376,20 +375,21 @@ txtjurusan.setText(null);         // TODO add your handling code here:
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(inputmhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(inputmhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(inputmhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(inputmhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputMhs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new inputmhs().setVisible(true);
+                new InputMhs().setVisible(true);
             }
         });
     }
