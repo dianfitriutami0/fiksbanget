@@ -19,12 +19,13 @@ import javax.swing.JOptionPane;
  *
  * @author MSI
  */
-public class buku extends javax.swing.JFrame {
+
+public class Buku extends javax.swing.JFrame {
 
     /**
      * Creates new form Buku
      */
-    public buku() {
+    public Buku() {
         initComponents();
         setkat();
         tampil();

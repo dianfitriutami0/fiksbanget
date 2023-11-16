@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package programperpustakaan;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -12,15 +13,18 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lenovo
  */
+
 public class DataPinjam extends javax.swing.JFrame {
 
     /**
      * Creates new form dataPinjam
      */
+    
     public DataPinjam() {
         initComponents();
         tampil();
@@ -31,7 +35,8 @@ public class DataPinjam extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-       this.setTitle("Data Peminjaman Buku");
+        
+        this.setTitle("Data Peminjaman Buku");
     }
 
     private void tampil(){
@@ -46,9 +51,10 @@ public class DataPinjam extends javax.swing.JFrame {
         model.addColumn("Tgl Kembali");
         model.addColumn("Denda");
         model.addColumn("Status");
+        
         try{
             String query = "select*from pinjaman";
-            java.sql.Connection kon = (Connection) koneksi.koneksi();
+            java.sql.Connection kon = (Connection) Konektor.koneksi();
             java.sql.Statement stm = kon.createStatement();
             java.sql.ResultSet data = stm.executeQuery(query);
             
@@ -57,12 +63,14 @@ public class DataPinjam extends javax.swing.JFrame {
                 data.getString(3),data.getString(4),data.getString(5),data.getString(6),
                 data.getString(7),data.getString(8),data.getString(9),data.getString(10)});
             }
+            
             tblpinjam.setModel(model);
         }
         catch(Exception b){
             
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,6 +116,12 @@ public class DataPinjam extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+        });
 
         tblpinjam.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,152 +227,131 @@ public class DataPinjam extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtsrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsrcActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_txtsrcActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     new InputPinjam().setVisible(true);
-dispose();        
+        new InputPinjam().setVisible(true);
+        dispose();     
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     new Beranda().setVisible(true);
+        new Beranda().setVisible(true);
         dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtsrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsrcMouseClicked
-     txtsrc.setText(null);        
+        txtsrc.setText(null);  
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtsrcMouseClicked
 
     private void txtsrcKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsrcKeyReleased
-    if(txtsrc.getText().equals("")){
- tampil();   
-}
-else{           
-          DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Id");
-        model.addColumn("Npm");
-        model.addColumn("Nama");
-        model.addColumn("Id_buku");
-        model.addColumn("judul");
-        model.addColumn("Jumlah");
-        model.addColumn("Tgl Pinjam");
-        model.addColumn("Tgl Kembali");
-        model.addColumn("Denda");
-        model.addColumn("Status");
-        try{
-           String query = "select * from pinjaman where id_pinjam = '"+txtsrc.getText()+"'";
-            java.sql.Connection kon = (Connection) koneksi.koneksi();
-            java.sql.Statement stm = kon.createStatement();
-            java.sql.ResultSet data = stm.executeQuery(query);
-            
-            while(data.next()){
-                model.addRow(new Object [] {data.getString(1),data.getString(2),
-                data.getString(3),data.getString(4),data.getString(5),data.getString(6),
-                data.getString(7),data.getString(8),data.getString(9),data.getString(10)});
-            }
-            tblpinjam.setModel(model);
+        if(txtsrc.getText().equals("")){
+            tampil();   
         }
-        catch(Exception b){
+        else{   
+            DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("Id");
+            model.addColumn("Npm");
+            model.addColumn("Nama");
+            model.addColumn("Id_buku");
+            model.addColumn("judul");
+            model.addColumn("Jumlah");
+            model.addColumn("Tgl Pinjam");
+            model.addColumn("Tgl Kembali");
+            model.addColumn("Denda");
+            model.addColumn("Status");
             
-        }           
+            try{
+                String query = "select * from pinjaman where id_pinjam = '"+txtsrc.getText()+"'";
+                java.sql.Connection kon = (Connection) Konektor.koneksi();
+                java.sql.Statement stm = kon.createStatement();
+                java.sql.ResultSet data = stm.executeQuery(query);
+
+                while(data.next()){
+                    model.addRow(new Object [] {data.getString(1),data.getString(2),
+                    data.getString(3),data.getString(4),data.getString(5),data.getString(6),
+                    data.getString(7),data.getString(8),data.getString(9),data.getString(10)});
+                }
+                
+                tblpinjam.setModel(model);
+            }
+            catch(Exception b){
+
+            } 
+        }
     }//GEN-LAST:event_txtsrcKeyReleased
 
     private void tblpinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblpinjamMouseClicked
-    int dialogResult = JOptionPane.showConfirmDialog 
-        (null, "Delete Data Yang Dipilih?","",YES_NO_OPTION);
-        
-           if(dialogResult == JOptionPane.YES_OPTION){
-               int baris = tblpinjam.getSelectedRow();
-        String id= tblpinjam.getValueAt(baris, 0).toString();
-        String id_buku = tblpinjam.getValueAt(baris, 3).toString();
-        
-        try {
-            String sql ="delete from pinjaman where id_pinjam = '"+id+"'"; 
-            java.sql.Connection conn=(Connection)koneksi.koneksi();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Berhasil");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
-        }       
- 
-   String status= tblpinjam.getValueAt(baris, 9).toString();
-   if(status.equals("Sudah Kembali"))
-   {
-       tampil();
-   }
-   else{
-        try{
-  String query1 = "select*from buku where id_buku = '"+id_buku+"'";
- java.sql.Connection kon1 = (Connection) koneksi.koneksi();
- java.sql.Statement st = kon1.createStatement();
- java.sql.ResultSet data1 = st.executeQuery(query1);
- 
- while(data1.next()){
-        String jmlh= tblpinjam.getValueAt(baris, 5).toString();
-     int jumlah= Integer.parseInt(data1.getString(7));
-     int jumlahpinjam = Integer.parseInt(jmlh);
-     int total = jumlah+jumlahpinjam;
-    try {
-            String sql1 ="UPDATE buku SET stok = '"+total
-                    +"' WHERE id_buku = '"+id_buku+"'";
-            java.sql.Connection conn1=(Connection)koneksi.koneksi();
-            java.sql.PreparedStatement pst=conn1.prepareStatement(sql1);
-            pst.execute();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
+        int dialogResult = JOptionPane.showConfirmDialog 
+         (null, "Delete Data Yang Dipilih?","",YES_NO_OPTION);
+
+        if(dialogResult == JOptionPane.YES_OPTION){
+            int baris = tblpinjam.getSelectedRow();
+            String id= tblpinjam.getValueAt(baris, 0).toString();
+            String id_buku = tblpinjam.getValueAt(baris, 3).toString();
+
+            try {
+                String sql ="delete from pinjaman where id_pinjam = '"+id+"'"; 
+                java.sql.Connection conn=(Connection)Konektor.koneksi();
+                java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Berhasil");
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
+            }       
+
+            String status= tblpinjam.getValueAt(baris, 9).toString();
+            
+            if(status.equals("Sudah Kembali")) {
+                tampil();
+            }
+            else{
+                try{
+                    String query1 = "select*from buku where id_buku = '"+id_buku+"'";
+                    java.sql.Connection kon1 = (Connection) Konektor.koneksi();
+                    java.sql.Statement st = kon1.createStatement();
+                    java.sql.ResultSet data1 = st.executeQuery(query1);
+
+                    while(data1.next()){
+                        String jmlh= tblpinjam.getValueAt(baris, 5).toString();
+                        int jumlah= Integer.parseInt(data1.getString(7));
+                        int jumlahpinjam = Integer.parseInt(jmlh);
+                        int total = jumlah+jumlahpinjam;
+                        
+                        try {
+                            String sql1 ="UPDATE buku SET stok = '"+total
+                             +"' WHERE id_buku = '"+id_buku+"'";
+                            java.sql.Connection conn1=(Connection)Konektor.koneksi();
+                            java.sql.PreparedStatement pst=conn1.prepareStatement(sql1);
+                            pst.execute();
+                        } 
+                        catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
+                        }
+                    }
+                }
+                catch(Exception b){
+                    JOptionPane.showMessageDialog(null, b.getMessage());
+                }
+            }
+
+            tampil();
         }
-     
-}
-}catch(Exception b){
- JOptionPane.showMessageDialog(null, b.getMessage());
-    }
-   }
-  
- tampil();
-           }
         else if(dialogResult == JOptionPane.NO_OPTION){
             tampil();
-
-            }
-  
+        }
     }//GEN-LAST:event_tblpinjamMouseClicked
+
+    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
+    }//GEN-LAST:event_jScrollPane1MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public DataPinjam(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dataPinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dataPinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dataPinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dataPinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DataPinjam().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

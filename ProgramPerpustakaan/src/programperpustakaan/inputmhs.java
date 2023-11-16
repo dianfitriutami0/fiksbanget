@@ -345,7 +345,7 @@ txtjurusan.setText(null);         // TODO add your handling code here:
             java.sql.PreparedStatement pdt = kon.prepareStatement(sql1);
             pdt.execute();
            JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-        new datamahasiswa().setVisible(true);
+        new DataMahasiswa().setVisible(true);
         dispose();
         } catch (Exception b) {
             JOptionPane.showMessageDialog(this, b.getMessage());

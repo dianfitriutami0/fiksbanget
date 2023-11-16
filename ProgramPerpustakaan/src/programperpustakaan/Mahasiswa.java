@@ -216,13 +216,13 @@ public class Mahasiswa extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Perubahan Data Gagal"+e.getMessage());
         }
-        new datamahasiswa().setVisible(true);
+        new DataMahasiswa().setVisible(true);
 dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       new datamahasiswa().setVisible(true);
+       new DataMahasiswa().setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -236,7 +236,7 @@ dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-new datamahasiswa().setVisible(true);
+new DataMahasiswa().setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

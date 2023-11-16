@@ -12,16 +12,17 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ACER
  */
-public class datamahasiswa extends javax.swing.JFrame {
+public class DataMahasiswa extends javax.swing.JFrame {
 
     /**
-     * Creates new form datamahasiswa
+     * Creates new form DataMahasiswa
      */
-    public datamahasiswa() {
+    public DataMahasiswa() {
         initComponents();
         loadtable();
    
@@ -31,36 +32,37 @@ public class datamahasiswa extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-       this.setTitle("Data Mahasiswa");
-    
+        
+        this.setTitle("Data Mahasiswa");
     }
     
     private void loadtable(){
-    DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("NO");
-    model.addColumn("ID");
-    model.addColumn("Nama");
-    model.addColumn("Jenis Kelamin");
-    model.addColumn("Telepon");
-    model.addColumn("Email");
-    model.addColumn("Jurusan");
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("NO");
+        model.addColumn("ID");
+        model.addColumn("Nama");
+        model.addColumn("Jenis Kelamin");
+        model.addColumn("Telepon");
+        model.addColumn("Email");
+        model.addColumn("Jurusan");
     
-    try{
-        String query = "select * from data_mahasiswa";
-        java.sql.Connection kon = (Connection) Konektor.koneksi();
-        java.sql.Statement stm = kon.createStatement();
-        java.sql.ResultSet data = stm.executeQuery(query);
-        
-        while(data.next()){
-           model.addRow(new Object[]{data.getString(1),data.getString(2)
-                   ,data.getString(3),data.getString(4), data.getString(5), data.getString(6), data.getString(7) });
+        try{
+            String query = "select * from data_mahasiswa";
+            java.sql.Connection kon = (Connection) Konektor.koneksi();
+            java.sql.Statement stm = kon.createStatement();
+            java.sql.ResultSet data = stm.executeQuery(query);
+
+            while(data.next()){
+               model.addRow(new Object[]{data.getString(1),data.getString(2)
+                ,data.getString(3),data.getString(4), data.getString(5), data.getString(6), data.getString(7) });
+            }
+            
+            tblmhs.setModel(model);
         }
-        tblmhs.setModel(model);
+        catch(Exception b){
+            JOptionPane.showMessageDialog(null,b.getMessage());
+        }
     }
-    catch(Exception b){
-        JOptionPane.showMessageDialog(null,b.getMessage());
-    }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -261,131 +263,107 @@ public class datamahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-new inputmhs().setVisible(true);
-dispose();        // TODO add your handling code here:
+        new inputmhs().setVisible(true);
+        dispose();        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-new Beranda().setVisible(true);
-        dispose();        // TODO add your handling code here:
+        new Beranda().setVisible(true);
+        dispose();        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-int selectedRow = tblmhs.getSelectedRow();
+        int selectedRow = tblmhs.getSelectedRow();
 
-    // Cek apakah ada baris yang dipilih
-    if (selectedRow != -1) {
-        // Ambil data dari inputan (jTextField1) dan ubah data pada baris terpilih di dalam tabel
-        String updatedData = txtsrc.getText();
-        tblmhs.setValueAt(updatedData, selectedRow, 0);
+        // Cek apakah ada baris yang dipilih
+        if (selectedRow != -1) {
+            // Ambil data dari inputan (jTextField1) dan ubah data pada baris terpilih di dalam tabel
+            String updatedData = txtsrc.getText();
+            tblmhs.setValueAt(updatedData, selectedRow, 0);
 
-        // Bersihkan inputan setelah data diubah
-        txtsrc.setText("");
-    } else {
-        System.out.println("Pilih baris terlebih dahulu!");
-    }        // TODO add your handling code here:
+            // Bersihkan inputan setelah data diubah
+            txtsrc.setText("");
+        } else {
+            System.out.println("Pilih baris terlebih dahulu!");
+        }        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-int selectedRow = tblmhs.getSelectedRow();
+        int selectedRow = tblmhs.getSelectedRow();
 
-    // Cek apakah ada baris yang dipilih
-    if (selectedRow != -1) {
-        // Hapus baris terpilih dari tabel
-        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblmhs.getModel();
-        model.removeRow(selectedRow);
+        // Cek apakah ada baris yang dipilih
+        if (selectedRow != -1) {
+            // Hapus baris terpilih dari tabel
+            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblmhs.getModel();
+            model.removeRow(selectedRow);
 
-        // Bersihkan inputan setelah data dihapus
-        txtsrc.setText("");
-    } else {
-        System.out.println("Pilih baris terlebih dahulu!");
-    }        // TODO add your handling code here:
+            // Bersihkan inputan setelah data dihapus
+            txtsrc.setText("");
+        } else {
+            System.out.println("Pilih baris terlebih dahulu!");
+        }        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-txtsrc.setText("");        // TODO add your handling code here:
+        txtsrc.setText("");        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-
     private void tblmhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmhsMouseClicked
-int baris = tblmhs.getSelectedRow();
+        int baris = tblmhs.getSelectedRow();
         String id= tblmhs.getValueAt(baris, 0).toString();
-      Session.setid(id);
-      new datamahasiswa().setVisible(true);
-       this.dispose();        // TODO add your handling code here:
+        Session.setid(id);
+        new DataMahasiswa().setVisible(true);
+        this.dispose();        
+        // TODO add your handling code here:
     }//GEN-LAST:event_tblmhsMouseClicked
 
     private void txtsrcKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsrcKeyReleased
-if(txtsrc.getText().equals("")){
- loadtable();   
-}
-else{      
-       DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("NO");
-    model.addColumn("ID");
-    model.addColumn("Nama");
-    model.addColumn("Jenis Kelamin");
-    model.addColumn("Telepon");
-    model.addColumn("Email");
-    model.addColumn("Jurusan");
-    
-    
-    try{
-        String query = "select * from mahasiswa where ID = '"+txtsrc.getText()+"'";
-        java.sql.Connection kon = (Connection) Konektor.koneksi();
-        java.sql.Statement stm = kon.createStatement();
-        java.sql.ResultSet data = stm.executeQuery(query);
-        
-        while(data.next()){
-           model.addRow(new Object[]{data.getString(1),data.getString(2)
-                   ,data.getString(3),data.getString(4), data.getString(5), data.getString(6), data.getString(7) });
+        if(txtsrc.getText().equals("")){
+            loadtable();   
         }
-        tblmhs.setModel(model);
-    }
-    catch(Exception b){
-        JOptionPane.showMessageDialog(null,b.getMessage());
-    }        // TODO add your handling code here:
-    }                 // TODO add your handling code here:
+        else{      
+            DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("NO");
+            model.addColumn("ID");
+            model.addColumn("Nama");
+            model.addColumn("Jenis Kelamin");
+            model.addColumn("Telepon");
+            model.addColumn("Email");
+            model.addColumn("Jurusan");
+
+            try{
+                String query = "select * from mahasiswa where ID = '"+txtsrc.getText()+"'";
+                java.sql.Connection kon = (Connection) Konektor.koneksi();
+                java.sql.Statement stm = kon.createStatement();
+                java.sql.ResultSet data = stm.executeQuery(query);
+
+                while(data.next()){
+                   model.addRow(new Object[]{data.getString(1),data.getString(2)
+                    ,data.getString(3),data.getString(4), data.getString(5), data.getString(6), data.getString(7) });
+                }
+                
+                tblmhs.setModel(model);
+            }
+            catch(Exception b){
+                JOptionPane.showMessageDialog(null,b.getMessage());
+            }        // TODO add your handling code here:
+        }                 
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtsrcKeyReleased
 
     private void txtsrcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsrcMouseClicked
-txtsrc.setText(null);        // TODO add your handling code here:
+        txtsrc.setText(null);        
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtsrcMouseClicked
 
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(datamahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(datamahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(datamahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(datamahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new datamahasiswa().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
