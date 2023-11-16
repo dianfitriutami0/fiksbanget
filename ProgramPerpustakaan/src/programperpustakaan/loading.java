@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package programperpustakaan;
+
 import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import javax.imageio.ImageIO;
  *
  * @author diann:v
  */
+
 public class Loading extends javax.swing.JFrame {
     public Timer t = null;
     private int count = 0;
