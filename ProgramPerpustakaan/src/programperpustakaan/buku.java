@@ -48,7 +48,7 @@ public class buku extends javax.swing.JFrame {
     
     private void tampil(){
     try{
-        String id = session.getid();
+        String id = Session.getid();
         String query ="select*from buku where id_buku = '"+id+"'";
         Connection kon = (Connection) Konektor.koneksi();
         Statement stm = kon.createStatement();

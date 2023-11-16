@@ -221,8 +221,8 @@ else if(txtpass.getText().equals("")){
 }
 
 else{
- session ss = new session();
- session.setuser(txtuser.getText());
+ Session ss = new Session();
+ Session.setuser(txtuser.getText());
 try{
     String query = "SELECT * FROM admin WHERE user='"+txtuser.getText()
                   +"' AND password='"+txtpass.getText()+"'";
@@ -230,7 +230,7 @@ try{
     java.sql.Statement st = con.createStatement();
     java.sql.ResultSet data = st.executeQuery(query);
     if(data.next()){
-        new loading().setVisible(true);
+        new Loading().setVisible(true);
       this.dispose();
     }
     else{

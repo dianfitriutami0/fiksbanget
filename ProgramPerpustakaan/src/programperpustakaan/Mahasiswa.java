@@ -330,7 +330,7 @@ this.dispose();
 
     private void setcombo() {
         try {
-    String ID = session.getid();           
+    String ID = Session.getid();           
            String sql = "select*from mahasiswa where npm = '"+ID+"'";
              java.sql.Connection conn = (Connection) koneksi.koneksi();
             java.sql.Statement stm = conn.createStatement();

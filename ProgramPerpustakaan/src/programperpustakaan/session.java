@@ -8,12 +8,12 @@ package programperpustakaan;
  *
  * @author ACER
  */
-public class session {
+
+public class Session {
     private static String user,id;
     
     public static void setuser(String user){
-        session.user = user;
-        
+        Session.user = user;
     }
     
     public static String getuser(){
@@ -21,8 +21,7 @@ public class session {
     }
     
     public static void setid(String id){
-        session.id = id;
-        
+        Session.id = id;
     }
     
     public static String getid(){

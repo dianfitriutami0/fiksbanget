@@ -310,7 +310,7 @@ txtsrc.setText("");        // TODO add your handling code here:
     private void tblmhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmhsMouseClicked
 int baris = tblmhs.getSelectedRow();
         String id= tblmhs.getValueAt(baris, 0).toString();
-      session.setid(id);
+      Session.setid(id);
       new datamahasiswa().setVisible(true);
        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_tblmhsMouseClicked

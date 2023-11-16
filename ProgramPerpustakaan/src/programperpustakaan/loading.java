@@ -16,15 +16,15 @@ import javax.imageio.ImageIO;
  *
  * @author diann:v
  */
-public class loading extends javax.swing.JFrame {
-    
+public class Loading extends javax.swing.JFrame {
     public Timer t = null;
     private int count = 0;
 
     /**
      * Creates new form kodeLoading
      */
-    public loading() {
+    
+    public Loading() {
         initComponents();
         
         try{
@@ -33,8 +33,8 @@ public class loading extends javax.swing.JFrame {
         }catch (IOException ex) {
             Logger.getLogger(splashScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setTitle("loading");
         
+        this.setTitle("loading");
         t = new Timer(100, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,7 +49,6 @@ public class loading extends javax.swing.JFrame {
                 dispose();
                 }
             }
-            
         });
         t.start();
     }
@@ -102,13 +101,10 @@ public class loading extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void jProgressBar1ComponentAdded(java.awt.event.ContainerEvent evt){
-        
-    }
+    
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

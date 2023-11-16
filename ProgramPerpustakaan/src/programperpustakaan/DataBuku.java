@@ -276,7 +276,7 @@ public class DataBuku extends javax.swing.JFrame {
     private void tblBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBukuMouseClicked
         int baris = tblBuku.getSelectedRow();
         String id= tblBuku.getValueAt(baris, 0).toString();
-        session.setid(id);
+        Session.setid(id);
         new Buku().setVisible(true);
         this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_tblBukuMouseClicked

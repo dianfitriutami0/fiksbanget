@@ -38,7 +38,7 @@ public class Beranda extends javax.swing.JFrame {
     private void setnama(){
        
    try{
-      String ss = session.getuser();           
+      String ss = Session.getuser();           
     String query = ("select nama_admin from "
                     + "admin where username='"+ ss+"' ");
             java.sql.Connection con = (Connection) Konektor.koneksi();
